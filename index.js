@@ -23,6 +23,13 @@ app.get('/', (req, res) => {
     res.render('index', { author: "Nhom01" })
 })
 
+const { emotions } = require('./data')
+
+
+app.get('/task1', (req, res)=>{
+    res.render('task1', {author: '19120173 - Đinh Minh Bảo', emotions: emotions})
+})
+
 app.get('/task2', (req, res) => {
     let salary = parseFloat(req.query.salary || 0)
     res.locals.jars = [
