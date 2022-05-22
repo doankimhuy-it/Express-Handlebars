@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     res.render('index', { author: "Nhom01" })
 })
 
-const { emotions } = require('./data')
+const { emotions, categories, products } = require('./data')
 
 
 app.get('/task1', (req, res)=>{
@@ -54,6 +54,18 @@ app.post('/task2', (req, res) => {
         salary * 10 / 100
     ]
     res.render('task2', { author: "19120239 - Đoàn Kim Huy" })
+})
+
+app.get('/task3', (req, res) => {
+    let category = req.query.cat || 0
+
+    res.locals.categories = categories
+    res.locals.products = products
+
+    if (category) {
+        res.locals.products = products.filter(item => item.category == category)
+    }
+    res.render('task3', {author: "19120283 - Quách Bình Long"})
 })
 
 app.set('port', process.env.PORT || 5000)
