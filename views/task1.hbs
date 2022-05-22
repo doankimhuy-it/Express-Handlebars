@@ -1,28 +1,27 @@
 <!--contain-->
-    <div class="container">
-        <h1 class="text-center">Inspiring Quotes</h1>
-    </div>
-    <div class="container">
-        <div class="row destacados">
-            {{#each emotions}}
-            <div class="col-md-3">
-                <a href="#" onclick="showQuote('{{imageQoute}}')">
-                    <img src="{{image}}" alt="{{title}}" class="img-circle img-thumbnail">
-                    <h2>{{title}}</h2>
-                </a>
-            </div>
-
-            {{/each}}
-
+<div class="container">
+    <h1 class="text-center">Inspiring Quotes</h1>
+</div>
+<div class="container">
+    <div class="row destacados">
+        {{#each emotions}}
+        <div class="col-md-3">
+            <a href="#" onclick="showQuote('{{quotePath}}')">
+                <img src="images/{{imagePath}}" alt="{{title}}" class="img-circle img-thumbnail">
+                <h2>{{title}}</h2>
+            </a>
         </div>
-        <div class="row text-center">
-            <img id="quoteImage" class="img-thumbnail" src="images/task1/default.jpg" />
-        </div>
+        {{/each}}
 
-        <script>
-            function showQuote(image){
-                document.getElementById("quoteImage").setAttribute('src', image)
-            }
-        </script>
     </div>
-    <!--/contain-->
+    <div class="row text-center">
+        <img id="quoteImage" class="img-thumbnail" src="images/task1/default.jpg" />
+    </div>
+
+    <script>
+        function showQuote(image) {
+            document.getElementById("quoteImage").setAttribute('src', 'images/' + image)
+        }
+    </script>
+</div>
+<!--/contain-->

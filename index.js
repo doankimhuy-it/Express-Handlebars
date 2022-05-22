@@ -23,11 +23,10 @@ app.get('/', (req, res) => {
     res.render('index', { author: "Nhom01" })
 })
 
-const { emotions, categories, products } = require('./data')
+const { emotions, categories, products, zodiacs } = require('./data')
 
-
-app.get('/task1', (req, res)=>{
-    res.render('task1', {author: '19120173 - Đinh Minh Bảo', emotions: emotions})
+app.get('/task1', (req, res) => {
+    res.render('task1', { author: "19120173 - Đinh Minh Bảo", emotions: emotions })
 })
 
 app.get('/task2', (req, res) => {
@@ -65,7 +64,17 @@ app.get('/task3', (req, res) => {
     if (category) {
         res.locals.products = products.filter(item => item.category == category)
     }
-    res.render('task3', {author: "19120283 - Quách Bình Long"})
+    res.render('task3', { author: "19120283 - Quách Bình Long" })
+})
+
+app.get('/task4', (req, res) => {
+    res.locals.zodiacs = zodiacs
+    res.render('task4', { author: "19120239 - Đoàn Kim Huy" })
+})
+
+app.get('/task4/:name', (req, res) => {
+    res.locals.zodiac = zodiacs.filter(item => item.name == req.params.name)[0]
+    res.render('task4-details', { author: "19120239 - Đoàn Kim Huy" })
 })
 
 app.set('port', process.env.PORT || 5000)
